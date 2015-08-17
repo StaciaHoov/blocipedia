@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  get 'welcome/idex'
+  
+  devise_for :users 
+  
+  root to: 'welcome#index'
+  
+  get 'welcome/index'
 
   get 'welcome/about'
-
-  root to: 'welcome#index'
+  
 
 end
