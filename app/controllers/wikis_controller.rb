@@ -6,6 +6,11 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    @stripe_btn_data = {
+            key: "#{ Rails.configuration.stripe[:publishable_key] }",
+            description: "Membership Upgrade - #{current_user.name}",
+            amount: 1500
+        }
   end
 
   def new
