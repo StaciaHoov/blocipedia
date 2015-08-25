@@ -9,4 +9,13 @@
 
 <% if policy(@wiki).destroy? %>
     <%= link_to "Delete", [@wiki], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this wiki?' } %> 
+<% end %><br>
+
+<%if current_user.role == 'standard' %>
+    <%= form_tag charges_path do %>
+        <h5>Do you want to make this wiki private? Upgrade to a Premium membership for more options.</h5>
+        <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>"
+              data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>"> 
+        </script>
+    <% end %>
 <% end %>
