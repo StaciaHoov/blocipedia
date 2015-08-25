@@ -29,6 +29,8 @@ gem 'figaro'
 
 gem 'pundit'
 
+gem 'stripe'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
