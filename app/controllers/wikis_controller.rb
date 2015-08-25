@@ -15,6 +15,11 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @stripe_btn_data = {
+      key: "#{ Rails.configuration.stripe[:publishable_key] }", 
+      description: "Membership Upgrade - #{current_user.name}",
+      amount: 1500
+    }
     authorize @wiki
   end
   
