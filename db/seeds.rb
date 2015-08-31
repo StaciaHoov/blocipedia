@@ -27,7 +27,8 @@ admin = User.new(
     name: 'admin user',
     email: 'admin@example.com',
     password: 'helloworld',
-    role: 'admin'
+    role: 'admin',
+    private: true
 )
 admin.skip_confirmation!
 admin.save!
