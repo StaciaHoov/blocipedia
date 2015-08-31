@@ -27,29 +27,12 @@ admin = User.new(
     name: 'admin user',
     email: 'admin@example.com',
     password: 'helloworld',
-    role: 'admin',
-    private: true
+    role: 'admin'
 )
 admin.skip_confirmation!
 admin.save!
     
-standard = User.new(
-    name: 'standard user',
-    email: 'standard@example.com',
-    password: 'helloworld',
-    role: 'standard'
-)
-standard.skip_confirmation!
-standard.save! 
-    
-premium = User.new(
-    name: 'premium user',
-    email: 'premium@example.com',
-    password: 'helloworld',
-    role: 'premium'
-)
-premium.skip_confirmation!
-premium.save! 
+
     
 puts "Seeds finished"
 puts "#{Wiki.count} wikis created"
