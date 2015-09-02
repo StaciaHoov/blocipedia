@@ -27,7 +27,7 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = Wiki.new(wiki_params)
+    @wiki = current_user.wikis.build(wiki_params) #makes sure the new wiki is associated with the user
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki successfully created!"
@@ -71,6 +71,6 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    (params.require(:wiki).permit(:title, :body, :private))
+    (params.require(:wiki).permit(:title, :body, :private, :user_id))
   end
 end
