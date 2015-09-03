@@ -1,5 +1,10 @@
 class WikiPolicy < ApplicationPolicy
     def index?
-        true
+       true
     end
+    
+    def show?
+       user.admin? or user.premium? or not record.private?
+    end
+
 end

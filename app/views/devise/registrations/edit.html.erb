@@ -37,12 +37,18 @@
     
     <h4>Cancel my account</h4>
     
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-success' %>
+    <%= button_to "Cancel", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-success' %>
     <br>
+    
+    <% if current_user.role == 'premium' %>
+      <h4>Downgrade to Standard Membership</h4>
+      <%= button_to "Standard", @current_user, data: {confirm: "Warning! Returning to Standard membership will make your private wikis public." }, method: :patch, class: 'btn btn-warning' %>
+    <% end %>
     
     <% if current_user.role == 'standard' %>
       <%= render partial: 'charges/charge' %>
     <% end %>
+    
     <%= link_to "Back", :back %>
   </div>
 </div>

@@ -1,11 +1,14 @@
 class WikisController < ApplicationController
+
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
     authorize @wikis
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    @current_user = @wiki.user(params[:user_id])
+    authorize @wiki
     @stripe_btn_data = {
             key: "#{ Rails.configuration.stripe[:publishable_key] }",
             description: "Membership Upgrade - #{current_user.name}",
@@ -24,7 +27,7 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = Wiki.new(wiki_params)
+    @wiki = current_user.wikis.build(wiki_params) #makes sure the new wiki is associated with the user
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki successfully created!"
@@ -68,6 +71,6 @@ class WikisController < ApplicationController
   private
   
   def wiki_params
-    (params.require(:wiki).permit(:title, :body))
+    (params.require(:wiki).permit(:title, :body, :private, :user_id))
   end
 end
