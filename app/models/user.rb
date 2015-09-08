@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  
-  has_many :wikis, dependent: :destroy
+  has_many :collaborators
+  has_many :wikis, through: :collaborators
 
   def standard?
     role == 'standard'
@@ -14,6 +14,14 @@ class User < ActiveRecord::Base
   
   def admin?
     role == 'admin'
+  end
+  
+  def publicize_wikis
+    wikis.each do |wiki|
+      if wiki.private == true
+        wiki.update_attributes(private: false)
+      end
+    end
   end
 
 end
