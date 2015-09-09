@@ -8,10 +8,10 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wikis = policy_scope(Wiki)
     @stripe_btn_data = {
-            key: "#{ Rails.configuration.stripe[:publishable_key] }",
-            description: "Membership Upgrade - #{current_user.name}",
-            amount: 1500
-        }
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Membership Upgrade - #{current_user.name}",
+      amount: 1500
+    }
   end
 
   def new
@@ -25,7 +25,7 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = Wiki.new(wiki_params) #makes sure the new wiki is associated with the user
+    @wiki = Wiki.new(wiki_params) 
     @wiki.user = current_user
     authorize @wiki
     if @wiki.save
@@ -39,7 +39,6 @@ class WikisController < ApplicationController
     
   def edit
     @wiki = Wiki.find(params[:id])
-    #@user = @wiki.users(params[:user_id])
     authorize @wiki
   end
   

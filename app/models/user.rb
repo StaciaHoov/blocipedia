@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   end
   
   def publicize_wikis
-    wikis.each do |wiki|
+    Wiki.where(user: self).each do |wiki|
       if wiki.private == true
         wiki.update_attributes(private: false)
       end
