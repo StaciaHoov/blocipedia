@@ -3,6 +3,6 @@
       <%= form_tag charges_path do %>
           <h4>Upgrade to Premium!</h4>
           <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key= '<%= Rails.configuration.stripe[:publishable_key]%>'
-              data-amount="<%= 1500 %>" data-description='<%= "Membership Upgrade - #{ current_user.name}" %>'> 
+              data-amount="<%= 1500 %>" data-description='<%= "Premium Membership" %>'> 
           </script>
       <% end %>

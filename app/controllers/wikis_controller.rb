@@ -1,19 +1,17 @@
 class WikisController < ApplicationController
 
   def index
-    @wikis = Wiki.visible_to(current_user)
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def show
     @wiki = Wiki.find(params[:id])
-    @current_user = @wiki.user(params[:user_id])
-    authorize @wiki
+    @wikis = policy_scope(Wiki)
     @stripe_btn_data = {
-            key: "#{ Rails.configuration.stripe[:publishable_key] }",
-            description: "Membership Upgrade - #{current_user.name}",
-            amount: 1500
-        }
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Membership Upgrade - #{current_user.name}",
+      amount: 1500
+    }
   end
 
   def new
@@ -27,14 +25,15 @@ class WikisController < ApplicationController
   end
   
   def create
-    @wiki = current_user.wikis.build(wiki_params) #makes sure the new wiki is associated with the user
+    @wiki = Wiki.new(wiki_params) 
+    @wiki.user = current_user
     authorize @wiki
     if @wiki.save
       flash[:notice] = "Wiki successfully created!"
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash[:error] = "There was an error creating a new wiki. Please try again."
-      render :new
+      render @wikis
     end
   end
     
@@ -49,7 +48,7 @@ class WikisController < ApplicationController
     
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated."
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash[:error] = "There was an error saving the wiki. Please try again."
       render :edit
