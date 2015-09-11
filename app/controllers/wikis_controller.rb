@@ -9,7 +9,7 @@ class WikisController < ApplicationController
     @wikis = policy_scope(Wiki)
     @stripe_btn_data = {
       key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Membership Upgrade - #{current_user.name}",
+      description: "Membership Upgrade",
       amount: 1500
     }
   end
