@@ -6,7 +6,8 @@ A production quality SaaS app that allows users to create their own wikis.
 Created by Me with my bloc mentor
 
 Hosted app address: 
-stacia-blocipedia.herokuapp.com
+
+
 
 * Ruby version
 
