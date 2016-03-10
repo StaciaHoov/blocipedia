@@ -1,38 +1,31 @@
-
 ## Blocipedia
 
 **Summary**    
-A production quality SaaS app that allows users to create their own wikis.
+A production quality SaaS app that allows users to create and collaborate on wikis.
 I made it with the help of a mentor through the Bloc FullStack Web Development Apprenticeship.  
 
-**Features**     EDIT
-Users can    
-    -- view public topics, posts, and comments   
-    -- create accounts to view private topics and posts and create their own posts and comments    
-    -- format their posts using Markdown   
-    -- favorite posts they like and vote posts up or down    
-    -- receive email notifications when there are new comments on a post they have favorited    
-    -- upload images to use in their posts and as their avatar    
-Posts are organized by topic and sorted by their rank (determined by age and number of votes)    
+**Features**     
+Users can  sign up for a Standard (free) account to create, edit, and delete public wikis.
+Users can purchase a Premium account that allows them to create private wikis.
+When User downgrades from Premium to Standard account, private wikis become public.
+Premium Users can add collaborators from a dropdown menu to work on private wikis.
+When collaborators are removed they are no longer able to view or work on private wikis.
+Users can edit wikis using Markdown syntax.
 
 **Technologies**    
 Languages, Libraries, and Frameworks: 
-    Ruby on Rails, jQuery, AJAX, Bootstrap
+    Ruby on Rails 4,2,1, jQuery, Bootstrap
 Databases: 
     SQLite (Test, Development), PostgreSQL (Production)
 Development Tools, Gems and Methodologies:    
-    Test-Driven Development: RSpec, Capybara, FactoryGirl     
     Faker for database seeding     
     Figaro to manage sensitive information     
-    Devise for user authentication     
-    Pundit for user authorization     
-    SendGrid for email processing    
-    CarrierWave for uploading files    
-    MiniMagick to manipulate images and handle sizing    
+    Devise for user authentication and confirmation 
+    SendGrid for email processing
+    Pundit for authorization of user roles (standard, premium, admin)
+    Stripe payment integration API and Stripe-ruby gem
     Redcarpet for Markdown formatting    
-    Will_paginate for pagination    
-    Amazon S3 for image storage    
-    Fog to support Amazon S3    
+
     
 
 **Deployment**    
