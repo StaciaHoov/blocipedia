@@ -13,12 +13,12 @@ I made it with the help of a mentor through the Bloc FullStack Web Development A
 * Users can edit wikis using Markdown syntax.
 
 ## Technologies
-### Languages, Libraries, and Frameworks: 
-* Ruby on Rails 4,2,1, 
+### Languages, Libraries, and Frameworks:     
+* Ruby on Rails 4.2.1 
 * jQuery
-* Bootstrap
-### Databases: 
-* SQLite (Test, Development)
+* Bootstrap    
+### Databases:     
+* SQLite (Test, Development)    
 * PostgreSQL (Production)
 # Development Tools, Gems and Methodologies:    
 * Faker for database seeding     
