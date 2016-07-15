@@ -1,4 +1,4 @@
-# Blocipedia
+# Wiki Collaboration Tool
 
 ## Summary
 A production quality SaaS app that allows users to create and collaborate on wikis.
