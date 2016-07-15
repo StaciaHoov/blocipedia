@@ -32,5 +32,5 @@ Development Tools, Gems and Methodologies:
 * Redcarpet for Markdown formatting    
 
 ## Deployment
-You can view the app on Heroku: [stacia-blocipedia app](https://stacia-blocipedia.herokuapp.com)
+You can view the app on Heroku: [wiki collaboration tool app](https://wiki-collaboration-tool.herokuapp.com)
 
